@@ -11,7 +11,7 @@ module Paranoia
   end
   alias :deleted? :destroyed?
   
-  def self.list
+  def list
   	list = self.unscoped.all
   end
   alias :lists :list

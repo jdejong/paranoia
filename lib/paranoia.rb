@@ -10,6 +10,10 @@ module Paranoia
     !self[:deleted_at].nil?
   end
   alias :deleted? :destroyed?
+  
+  def list
+  	self.unscoped.all
+  end
 end
 
 class ActiveRecord::Base

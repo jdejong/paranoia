@@ -12,7 +12,7 @@ module Paranoia
   alias :deleted? :destroyed?
   
   def list
-  	self.unscoped.all
+  	@list = self.unscoped.all
   end
 end
 

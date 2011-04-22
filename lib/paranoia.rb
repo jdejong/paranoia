@@ -3,7 +3,7 @@ module Paranoia
       base.extend(ClassMethods)
   end
   def destroy
-    #_run_destroy_callbacks
+    _run_destroy_callbacks
     #self[:deleted_at] ||= Time.now
     #self.save!    
   end

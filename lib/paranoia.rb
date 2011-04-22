@@ -1,4 +1,7 @@
 module Paranoia
+  def self.included(base)
+      base.extend(ClassMethods)
+  end
   def destroy
     _run_destroy_callbacks
     self[:deleted_at] ||= Time.now
@@ -11,15 +14,16 @@ module Paranoia
   end
   alias :deleted? :destroyed?
   
-  def self.list
-  	list = self.unscoped.all
+  module ClassMethods
+	  def list
+		list = self.unscoped.all
+	  end
   end
 end
 
 class ActiveRecord::Base
   def self.acts_as_paranoid
     self.send(:include, Paranoia)
-	self.send(:consume, Paranoia)
     default_scope :conditions => { :deleted_at => nil }
   end
 end

@@ -11,10 +11,9 @@ module Paranoia
   end
   alias :deleted? :destroyed?
   
-  def list
+  def self.list
   	list = self.unscoped.all
   end
-  alias :lists :list
 end
 
 class ActiveRecord::Base

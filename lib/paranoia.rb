@@ -5,7 +5,9 @@ module Paranoia
   def destroy
     _run_destroy_callbacks
 	#self.update_attributes!(:deleted_at => Time.now)
+	puts 'Deleted At'
     self.deleted_at ||= Time.now
+	puts 'Save'
     self.save!    
   end
   alias :delete :destroy

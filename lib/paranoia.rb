@@ -19,6 +19,7 @@ end
 class ActiveRecord::Base
   def self.acts_as_paranoid
     self.send(:include, Paranoia)
+	self.send(:consume, Paranoia)
     default_scope :conditions => { :deleted_at => nil }
   end
 end

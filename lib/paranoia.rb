@@ -3,10 +3,10 @@ module Paranoia
       base.extend(ClassMethods)
   end
   def destroy
-    #_run_destroy_callbacks
+    _run_destroy_callbacks
 	#self.update_attribute!(:deleted_at => Time.now)
-	self.deleted_at = Time.now
-	self.save
+	deleted_at = Time.now
+	save!
   end
   alias :delete :destroy
 

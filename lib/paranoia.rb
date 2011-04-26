@@ -4,7 +4,7 @@ module Paranoia
   end
   def destroy
   	_run_destroy_callbacks
-	if self.class.respond_to?(:paper_trail_active) && self.class.paper_trail_active
+	if self.respond_to?(:paper_trail_active) && self.paper_trail_active
         self.class.paper_trail_off
 		self.deleted_at = Time.now
 		self.save!   

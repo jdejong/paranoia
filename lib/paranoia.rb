@@ -10,6 +10,7 @@ module Paranoia
 		self.save!   
 		self.class.paper_trail_on
 	else
+		puts 'no_paper_trail'
 		self.deleted_at = Time.now
 		self.save!  
 	end

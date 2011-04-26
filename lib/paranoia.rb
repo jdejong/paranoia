@@ -3,14 +3,18 @@ module Paranoia
       base.extend(ClassMethods)
   end
   def destroy
-  	_run_destroy_callbacks
-	if self.respond_to?(:paper_trail_active) && self.paper_trail_active
-        self.class.paper_trail_off
-		self.deleted_at = Time.now
-		self.save!   
-		self.class.paper_trail_on
-	else
-		puts 'no_paper_trail'
+  	#_run_destroy_callbacks
+	#if self.respond_to?(:paper_trail_active) && self.paper_trail_active
+    #    self.class.paper_trail_off
+	#	self.deleted_at = Time.now
+	#	self.save!   
+	#	self.class.paper_trail_on
+	#else
+	#	puts 'no_paper_trail'
+	#	self.deleted_at = Time.now
+	#	self.save!  
+	#end
+	_run_destroy_callbacks do
 		self.deleted_at = Time.now
 		self.save!  
 	end
